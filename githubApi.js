@@ -31,14 +31,14 @@ const got = require("got")
 
 class GithubApi {
   constructor() {
-    this.api = 'https://api.github.com/repos/'
+    this.api = 'https://api.github.com/repos/';
   }
 
 fetchRepositoryData(repoPath, printFunction) {
   let url = this.api + repoPath;
   got(url)
     .then((response) => {
-      printFunction(JSON.parse(response.body))
+      printFunction(JSON.parse(response.body));
     });
 }
 
@@ -50,4 +50,4 @@ fetchRepositoryData(repoPath, printFunction) {
 //   console.log(repositoryData);
 //  });
 
- module.exports = GithubApi
+ module.exports = GithubApi;
