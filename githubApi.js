@@ -45,8 +45,10 @@ fetchRepositoryData(repoPath, printFunction) {
 
 }
 
-const api = new GithubApi();
+// const api = new GithubApi();
 
-api.fetchRepositoryData('sinatra/sinatra', (repositoryData) => {
-  console.log(repositoryData);
- });
+// api.fetchRepositoryData('sinatra/sinatra', (repositoryData) => {
+//   console.log(repositoryData);
+//  });
+
+ module.exports = GithubApi
