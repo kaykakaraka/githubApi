@@ -3,6 +3,8 @@
 // calls the given callback with the received data (after transforming the JSON into a JavaScript object).
 // // In node
 
+const got = require("got")
+
 // const GithubApi = require('./githubApi');
 
 // const api = new GithubApi();
@@ -27,3 +29,24 @@
 // //   (...)
 // // }
 
+class GithubApi {
+  constructor() {
+    this.api = 'https://api.github.com/repos/'
+  }
+
+fetchRepositoryData(repoPath, printFunction) {
+  let url = this.api + repoPath;
+  console.log(url)
+  got(url)
+    .then((response) => {
+      printFunction(JSON.parse(response.body))
+    });
+}
+
+}
+
+const api = new GithubApi();
+
+api.fetchRepositoryData('sinatra/sinatra', (repositoryData) => {
+  console.log(repositoryData);
+ });
