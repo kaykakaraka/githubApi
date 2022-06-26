@@ -5,11 +5,15 @@ class Github {
     this.api = api;
   }
 
+  fetch(path) {
+    this.api.fetchRepositoryData(path, (repositoryData) => {
+      this.repositoryData = repositoryData;
+      });
+   
+  }
+
   getRepoData() {
-    return {
-      name: 'sinatra/sinatra',
-      description: 'some fake description',
-    }
+    return this.repositoryData; 
   }
 }
 

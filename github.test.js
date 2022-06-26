@@ -9,9 +9,25 @@ describe('Github',() => {
       });
     }};
     const github = new Github(mockedApi);
+    github.fetch('sinatra/sinatra')
     expect(github.getRepoData()).toEqual({
       name: 'sinatra/sinatra',
       description: 'some fake description',
+    });
+  });
+
+  it('gets different repo data fetched by the Api class',() => {
+    const mockedApi = { fetchRepositoryData: (repoName, callback) => {
+      callback({
+        name: 'fakesinatra/sinatra',
+        description: 'a very fake description',
+      });
+    }};
+    const github = new Github(mockedApi);
+    github.fetch('sinatra/sinatra')
+    expect(github.getRepoData()).toEqual({
+      name: 'fakesinatra/sinatra',
+      description: 'a very fake description',
     });
   });
 });
