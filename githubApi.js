@@ -36,7 +36,6 @@ class GithubApi {
 
 fetchRepositoryData(repoPath, printFunction) {
   let url = this.api + repoPath;
-  console.log(url)
   got(url)
     .then((response) => {
       printFunction(JSON.parse(response.body))
